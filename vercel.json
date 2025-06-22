@@ -2,35 +2,30 @@
  "version": 2,
  "builds": [
   {
+   "src": "*.html",
+   "use": "@vercel/static"
+  },
+  {
+   "src": "*.css",
+   "use": "@vercel/static"
+  },
+  {
+   "src": "*.js",
+   "use": "@vercel/static"
+  },
+  {
    "src": "server.js",
-   "use": "@vercel/node",
-   "config": { "includeFiles": ["dist/**"] }
+   "use": "@vercel/node"
   }
  ],
  "routes": [
   {
-   "src": "/style.css",
-   "dest": "/style.css"
-  },
-  {
-   "src": "/script.js",
-   "dest": "/script.js"
-  },
-  {
-   "src": "/signup.html",
-   "dest": "/signup.html"
-  },
-  {
-   "src": "/signup.js",
-   "dest": "/signup.js"
-  },
-  {
-   "src": "/dashboard.html",
-   "dest": "/dashboard.html"
+   "src": "/api/(.*)",
+   "dest": "server.js"
   },
   {
    "src": "/(.*)",
-   "dest": "server.js"
+   "dest": "/$1"
   }
  ]
 }
