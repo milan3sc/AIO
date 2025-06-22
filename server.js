@@ -11,7 +11,7 @@ const PORT = 3000;
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.join(__dirname, '/')));
 
 // Database setup
 const db = new sqlite3.Database('./users.db', (err) => {
